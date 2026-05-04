@@ -48,7 +48,7 @@ The investigation timeline provides a chronological view of alerts and related a
 ---
 
 ### 7. VM Activity Map
-![VM Map](screenshot/./VMmap.png)
+![VM Map](screenshots/./VMmap.png)
 
 This map provides a visual representation of login attempts against the virtual machine from different geographic locations. Since the VM was intentionally exposed to the internet as a honeypot, it attracted traffic from various regions. The clustering of activity highlights how frequently internet-facing systems are targeted by automated scanning and attack attempts. This visualization helped reinforce the idea that these attacks are not random. They are constant and global, which is why continuous monitoring and automated detection are critical in real-world environments.
 
