@@ -13,7 +13,7 @@ Windows Security Event logs were successfully ingested into Microsoft Sentinel f
 
 ---
 ### 2. Failed Login Attempts (Event ID 4625)
-![Failed Attempts](screenshots/Failedattempts.png)
+![Failed Attempts](screenshots/Failedattmpts.png)
 
  I filtered specifically for failed login attempts (Event ID 4625) to identify patterns of repeated authentication failures. The results showed multiple attempts coming from the same IP addresses within short time windows, which is not typical for normal user behavior. This pattern is commonly associated with brute force attacks, where an attacker repeatedly tries different credentials to gain access. By narrowing the data in this way, I was able to quickly identify suspicious IP addresses that required further investigation.
 
