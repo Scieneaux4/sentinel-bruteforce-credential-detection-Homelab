@@ -1,0 +1,32 @@
+🧪 Lab Walkthrough
+1. Environment Setup
+
+I created a virtual machine in Microsoft Azure and configured it to simulate a real-world endpoint. The VM was intentionally exposed to the internet to act as a honeypot, allowing it to attract and capture authentication attempts from external sources. I then enabled Microsoft Sentinel and connected it to a Log Analytics Workspace to begin collecting security logs.
+
+2. Log Collection and Ingestion
+
+Windows Security Event logs were successfully ingested into Microsoft Sentinel from the virtual machine. I verified that both successful login events (Event ID 4624) and failed login events (Event ID 4625) were present. This confirmed that logging was working properly and that authentication activity could be monitored reliably.
+
+3. Identifying Failed Login Activity
+
+I filtered the logs to focus on failed login attempts using Event ID 4625. During analysis, I observed repeated login attempts originating from the same IP addresses within short time intervals. This pattern is not typical of normal user behavior and is commonly associated with brute force attacks. This step helped identify potentially suspicious activity worth investigating further.
+
+4. Correlating Successful Logins After Failures
+
+I expanded the analysis by including successful login events alongside failed attempts. This allowed me to identify a key pattern where a single IP address generated multiple failed login attempts and then eventually succeeded. This sequence is a strong indicator of a successful brute force attack, where the attacker eventually guesses valid credentials. Correlating both event types provided deeper insight into the severity of the activity.
+
+5. Detection Rule Creation
+
+I created a KQL-based detection rule in Microsoft Sentinel to identify IP addresses with multiple failed login attempts followed by at least one successful login within a defined time window. This rule automates detection of brute force behavior and ensures that similar activity will trigger alerts in the future.
+
+6. Security Incident Generation
+
+Once the detection rule was active, Microsoft Sentinel generated a security incident based on the suspicious login activity. The incident included relevant details such as the source IP address, associated login events, and contextual data needed for investigation. This demonstrates how automated detection rules translate into actionable alerts within a SOC environment.
+
+7. Investigation and Analysis
+
+I reviewed the generated incident in Microsoft Sentinel and analyzed the associated entities and timeline. This included examining login sequences, identifying the attacking IP address, and understanding the progression from failed attempts to successful access. This step reflects how a SOC analyst would investigate and validate a potential security threat.
+
+8. Visualizing Attack Activity
+
+Using the built-in workbook, I visualized login attempts on a geographic map. The data showed activity originating from multiple regions around the world. Since the virtual machine was exposed as a honeypot, it attracted automated scanning and attack attempts from various locations. This visualization highlights how common and widespread these attacks are against internet-facing systems.
