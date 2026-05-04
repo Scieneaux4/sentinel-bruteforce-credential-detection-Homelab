@@ -1,4 +1,4 @@
-# Microsoft Sentinel SIEM Lab: Brute Force & Credential Compromise Detection
+# Microsoft Sentinel SIEM Home Lab: Brute Force & Credential Compromise Detection
 
 In this project, I built a SIEM lab using Microsoft Sentinel in Azure to monitor and analyze authentication activity from a Windows virtual machine. The VM was intentionally exposed to the internet as a honeypot to attract and capture real-world login attempts. The goal of this lab was to simulate attacker behavior, detect brute-force activity, and understand how security events are investigated in a SOC environment.
 
